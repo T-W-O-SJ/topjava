@@ -1,4 +1,4 @@
-rupackage ru.javawebinar.topjava.repository.jdbc;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
@@ -18,7 +18,7 @@ import java.util.List;
 import static ru.javawebinar.topjava.util.DateTimeUtil.getEndExclusive;
 import static ru.javawebinar.topjava.util.DateTimeUtil.getStartInclusive;
 
-@Repository
+
 public class JdbcMealRepository implements MealRepository {
 
     private static final RowMapper<Meal> ROW_MAPPER = BeanPropertyRowMapper.newInstance(Meal.class);
@@ -88,7 +88,6 @@ public class JdbcMealRepository implements MealRepository {
         return jdbcTemplate.query(
                 "SELECT * FROM meals WHERE user_id=?  AND CAST(date_time AS DATE) BETWEEN  ? AND ? ORDER BY date_time DESC",
                 ROW_MAPPER, userId, startDate, endDate);
-        "SELECT * FROM meals WHERE user_id=? AND date_time >=? AND date_time < ? ORDER BY date_time DESC",
-                ROW_MAPPER, userId, getStartInclusive(startDate), getEndExclusive(endDate));
+
     }
     }
